@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recorded Streams | Guardian Angel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="{{url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flv.js@latest/dist/flv.min.js"></script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="Loading Screen" class="loading-icon">
+        </div>
+    </div>
+    
+    <div class="top-banner">
+        <button class="toc-button" onclick="toggleNav()">☰</button>
+
+        <div class="top-banner-title">
+            <a href="{{ url_for('homepage') }}">
+                Guardian Angel
+                <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="Icon" class="header-icon">
+            </a>
+        </div>
+        
+        <div class="profile-icon">
+            <a href="{{ url_for('profile') }}">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <a href="{{ url_for('homepage') }}">Home</a>
+        <a href="{{ url_for('sms') }}">Security Monitoring (SMS)</a>
+        <a href="{{ url_for('emcs') }}">Environmental Monitoring (EMCS)</a>
+        <a href="{{ url_for('devices') }}">Device Management</a>
+        <a href="{{ url_for('recordings') }}">Past Recordings</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <div class="sidebar-divider"></div>
+        <a href="#" id="logout-button" class="logout-item">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+
+    <main id="main">
+        <h1>Security Camera Recordings</h1>
+        <p>View and manage your security camera recordings</p>
+        
+        <div class="recordings-container">
+            <div class="recordings-list-section">
+                <h2>Available Recordings</h2>
+                <ul id="recording-list" class="recording-list"></ul>
+            </div>
+            
+            <div class="video-player-section">
+                <h2>Video Player</h2>
+                <video id="recording-player" class="recording-player" width="100%" controls></video>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

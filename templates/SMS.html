@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Monitoring Subsystem (SMS) | Guardian Angel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="{{url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <div id="loading-screen">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="Loading Screen" class="loading-icon">
+        </div>
+    </div>
+    
+    <div class="top-banner">
+        <button class="toc-button" onclick="toggleNav()">☰</button>
+
+        <div class="top-banner-title">
+            <a href="{{ url_for('homepage') }}">
+                Guardian Angel
+                <img src="{{ url_for('static', filename='icons/logo.png') }}" alt="Icon" class="header-icon">
+            </a>
+        </div>
+        
+        <div class="profile-icon">
+            <a href="{{ url_for('profile') }}">
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <a href="{{ url_for('homepage') }}">Home</a>
+        <a href="{{ url_for('sms') }}">Security Monitoring (SMS)</a>
+        <a href="{{ url_for('emcs') }}">Environmental Monitoring (EMCS)</a>
+        <a href="{{ url_for('devices') }}">Device Management</a>
+        <a href="{{ url_for('recordings') }}">Past Recordings</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <div class="sidebar-divider"></div>
+        <a href="#" id="logout-button" class="logout-item">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+
+    <main id="main">
+        <h1>Security Monitoring Subsystem (SMS)</h1>
+        <p>Welcome to the Security Monitoring Subsystem (SMS)</p>
+
+        <div class="video-container">
+            <div class="video-header">
+                <h2>Live Security Feed</h2>
+                <a href="{{ url_for('recordings') }}" class="recordings-link">
+                    <i class="fas fa-film"></i> View Past Recordings
+                </a>
+            </div>
+
+            <video id="videoStream" width="100%" controls autoplay muted></video>
+            
+        </div>
+    </main>
+    
+</body>
+</html>
